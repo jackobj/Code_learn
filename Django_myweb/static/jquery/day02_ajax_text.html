@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax_text</title>
+    <script src="jquery-3.3.js"></script>
+</head>
+<body>
+	<p>下面显示的是改网页的ajax</p>
+    <script>
+        $.ajxa(function () {
+            url:"/var/www/html/photo_coll/b.jpg",
+            type:"GET",
+            dataType"jsonp",
+	    success:function(result){
+		console.log(result.data);
+	}
+	    error:function(result){
+		console.log(result)
+	}
+
+
+
+        });
+    </script>
+</body>
+</html>

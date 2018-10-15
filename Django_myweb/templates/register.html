@@ -1,0 +1,284 @@
+{% extends 'zj_demand/black_1.html' %}
+
+{% block content %}
+
+		<main class="page-main page-main--auth">
+			<div class="c-auth">
+				<div class="c-auth__header">
+					<h2 class="c-auth__title">快人脉注册</h2></div>
+				<div class="c-auth__content">
+					<form class="c-auth__form"  method="post" action="/login/register_handler/" enctype="multipart/form-data">
+                        {% csrf_token %}
+						<div class="c-auth__form-group c-auth__form-group--phone">
+                            <input class="c-auth__input c-auth__phone" name="username" id="username" onblur="user()" placeholder="手机号码" required>
+                            <span class="c-auth__login-tip" style="color: #AA0000" id="username_text"></span>
+                        </div>
+                        {# 用户名进行判断 #}
+                        <script>
+                             function user() {
+                                 var username = document.getElementById('username').value;
+                                 var username_text = document.getElementById('username_text');
+                                       if (username.innerHTML=='') {
+                                           return username_text='用户名不能为空';
+                                       }else if(!(/^1[34578]\d{9}$/.test(username))){
+                                           return username_text.innerText = '输入的手机号不合法';
+                                     }else if ((/^1[34578]\d{9}$/.test(username))) {
+                                           return username_text.innerText ='';
+                                     }
+                             }
+                        </script>
+                        <!--验证码-->
+						<div class="c-auth__form-group c-auth__form-group--checksum">
+                            <input class="c-auth__input c-auth__checksum" name="yanzhengma" id="zcode"  placeholder="校验码" required>
+                            <img class="c-auth__img-checksum" src="/login/ver/" onclick="change(this);"  id="checkpic">
+                        </div>
+                        <script>
+
+                             function change(ths){
+                                ths.src = ths.src +'?';
+                            }
+
+
+
+                        </script>
+
+                        <!---->
+						<div class="c-auth__form-group c-auth__form-group--password">
+                            <input type="password" class="c-auth__input c-auth__password" name="password" id="password" onblur="mima()" placeholder="设置密码,必须字母数字8-18位组成" required>
+                            <span class="c-auth__login-tip" style="color: #AA0000" id="span_d"></span>
+                        </div>
+                        {# 密码进行判断 #}
+                        <script>
+                            function mima() {
+
+                                var reg2 = /([a-zA-Z0-9!@#$%^&*()_?<>{}]){8,18}/;
+                                var reg3 = /[a-zA-Z]+/;
+                                var reg4 = /[0-9]+/;
+                                var pass = document.getElementById('password').value;
+                                var span_d = document.getElementById('span_d');
+                                    if (pass.value == '') {
+                                        span_d.innerText = '密码不能为空';
+                                    }else if(reg2.test(pass) && reg3.test(pass) && reg4.test(pass)){
+                                        return span_d.innerText = '';
+                                    }else if(!reg2.test(pass)){
+                                        return span_d.innerText = '长度需要在8-18位之间';
+                                    }else if(!reg3.test(pass)){
+                                        return span_d.innerText = '需要含有字母';
+                                    }else if(!reg4.test(pass)){
+                                        return span_d.innerText = '必须包含有数字！';
+                                    }
+
+                            }
+                        </script>
+
+						<div class="c-auth__form-group c-auth__form-group--password-confirm">
+                            <input type="password" class="c-auth__input c-auth__password-confirm" name="cpassword" id="cpwd" onblur="lowce()" placeholder="确认密码" required>
+                        </div>
+                         <span class="c-auth__login-tip" style="color: #AA0000" id="span_s"></span>
+                        {# 再次输入密码进行判断 #}
+                        <script>
+                            function lowce() {
+                                var pass = document.getElementById('password');
+                                var cpass = document.getElementById('cpwd');
+                                var span_s = document.getElementById('span_s');
+
+                                    if(cpass.value == ''){
+                                        span_s.innerText = '再次输入密码不能为空';
+                                    }else if (pass.value != cpass.value){
+                                        span_s.innerText = '两次输入的密码不一致！';
+                                    }else{
+                                        span_s.innerText ='';
+                                    }
+                            }
+                        </script>
+
+						<div class="c-auth__form-group c-auth__form-group--action"><button class="btn c-auth__submit">注册</button></div>
+					</form>
+
+					<div class="c-auth__more"><span class="c-auth__agreement"><span class="c-auth__agreement-label">注册代表您已同意</span>
+						<a class="c-auth__agreement-link" href="#">《网站用户协议》</a>
+						</span>
+                        <span class="c-auth__login">
+                            <span class="c-auth__login-tip">已有账号</span>
+						<a class="c-auth__login-link" href="login.html">直接登录</a>
+						</span>
+					</div>
+				</div>
+			</div>
+		</main>
+
+{# 他用的延时函数进行判断 #}
+<script>
+    function changing(){
+    document.getElementById('checkpic').src="class/code.php?"+Math.random();
+}
+function showTime1()
+{
+var shu = $('#zzc2').text();
+shu = shu - 1;
+if(shu > 0){
+	$('#zzc2').text(shu);
+    setTimeout("showTime1()", 1000);
+}else{
+	 $('#zzc1').show();
+	 $('#zzc2').hide();
+}
+}
+</script>
+    {# 他自己写的判断 #}
+<script>
+
+	function codes(){
+
+
+
+
+
+	var zphone = $('#zphone').val();
+
+          			if(zphone == ""){
+
+	//一般直接写在一个js文件中
+layui.use(['layer', 'form'], function(){
+  //信息框-例4
+layer.msg('请填写手机号！', {icon: 2});
+
+});
+return false;
+
+}
+
+
+
+
+
+	var zcode = $('#zcode').val();
+
+          			if(zcode == ""){
+
+
+          					//一般直接写在一个js文件中
+layui.use(['layer', 'form'], function(){
+  //信息框-例4
+layer.msg('请填写验证码！', {icon: 2});
+
+});
+
+return false;
+
+          			}
+
+        var htmlobj=$.ajax({url:"class/zcode.php",async:false});
+        var zcode1 = 　htmlobj.responseText;
+        var abc2 = zcode1 - zcode;
+        if(abc2 != 0){
+            //一般直接写在一个js文件中
+            layui.use(['layer', 'form'], function(){
+                //信息框-例4
+                layer.msg('验证码错误！', {icon: 2});
+
+});
+          		return false;
+          				}
+
+
+
+
+
+
+
+var zcode = $('#zcode').val();
+
+
+      $.get("class/phone.php?phone=" + zphone + "&co=" + zcode, function(result){
+
+      if(result == 14){
+
+
+          					layui.use(['layer', 'form'], function(){
+  //信息框-例4
+layer.msg('当前手机号码已经注册，请直接登陆！', {icon: 2});
+
+});
+          					return false;
+
+          			}
+
+
+
+              if(result == 24){
+
+
+          					layui.use(['layer', 'form'], function(){
+  //信息框-例4
+layer.msg('参数错误，请填写正确的验证码！', {icon: 2});
+
+});
+          					return false;
+
+          			}
+
+
+
+
+
+
+          			      if(result == 12){
+
+
+          					layui.use(['layer', 'form'], function(){
+  //信息框-例4
+layer.msg('今日发送已达上限！', {icon: 2});
+
+});
+          					return false;
+
+          			}
+
+
+
+
+        if(result == 10){
+
+      	$('#zzc2').text("60");
+
+      	   	showTime1();
+
+
+     $('#zzc2').show();
+	 $('#zzc1').hide();
+
+
+	  }
+
+	})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+</script>
+
+
+
+
+
+{% endblock %}

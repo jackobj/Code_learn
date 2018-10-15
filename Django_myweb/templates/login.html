@@ -1,0 +1,94 @@
+{% extends 'zj_demand/black.html' %}
+
+{% block content %}
+		<main class="page-main page-main--auth">
+			<div class="c-auth">
+				<div class="c-auth__header">
+					<h2 class="c-auth__title">用户登录</h2></div>
+				<div class="c-auth__content">
+                    <form class="c-auth__form" method="post" action="/login/login_handler/">
+                        {% csrf_token %}
+						<div class="c-auth__form-group c-auth__form-group--phone">
+                            <input class="c-auth__input" placeholder="手机号" name="username" id="zphone"  onblur="user()" type="text" required>
+                            <span class="c-auth__login-tip" style="color: #AA0000" id="username_text"></span>
+                        </div>
+                        <script>
+                             function user() {
+                                 var username = document.getElementById('zphone').value;
+                                 var username_text = document.getElementById('username_text');
+                                       if (username.innerHTML=='') {
+                                           return username_text.innerText='登录帐号不能为空';
+                                       }else if(!(/^1[34578]\d{9}$/.test(username))){
+                                           return username_text.innerText = '输入的帐号不合法';
+                                     }else if ((/^1[34578]\d{9}$/.test(username))) {
+                                           return username_text.innerText ='';
+                                     }
+                             }
+                        </script>
+
+						<div class="c-auth__form-group c-auth__form-group--password">
+                            <input class="c-auth__input" placeholder="密码" name="password" id="zpass" type="password" onblur="logw()"  required>
+                        </div>
+
+
+                        <div class="c-auth__form-group c-auth__form-group--action" style="text-align: center;color: red;display: none;"  id="p1">
+									<span id="ts">
+										密码错误
+									</span>
+                        </div>
+                        <div class="c-auth__form-group c-auth__form-group--action">
+
+                                <button type="submit" class="btn c-auth__submit">登录</button>
+                        </div>
+                    </form>
+	<script>
+		window.onload=function KeyDown() {
+		    if (event.keyCode == 13) {
+		        logw();
+		    }
+		};
+		function logw(){
+		    if($("#zphone").val()==''){
+		        $("#p1").show();
+			    $("#ts").text("请填写手机号!");
+			}
+			else{
+		        if($("#zpass").val()==''){
+		            $("#p1").show();
+		            $("#ts").text("请填写密码!");
+		        }else {
+		            $("#ts").text('');
+                }
+
+		        //else{
+		        //    $("#ts").text("登录中!");
+		        //    var zzphone = $("#zphone").val();
+		        //    var zzpass = $("#zpass").val();
+		        //    $.post("logw.php", { zphone: ""+ zzphone+"", zpass: ""+zzpass+"" },
+                //        function(data){
+		        //        if(data == 1){
+		        //            $("#p1").show();
+		        //            $("#ts").text("密码错误");
+		        //        }
+		        //        if(data == 2){
+		        //            $("#p1").show();
+		        //            $("#ts").text("登陆成功");
+		        //            top.location="http://www.mybdhome.com/user/";
+		        //        }
+		        //    });
+		        //}
+		    }
+		}
+		$("#p11").hide();
+	</script>
+					<div class="c-auth__more">
+						<a class="c-auth__forgot-password" href="#">忘记密码</a>
+                        <span class="c-auth__register">
+                        <span class="c-auth__register-tip">还未注册</span>
+						<a class="c-auth__link" href="/login/register/">去注册</a>
+						</span>
+					</div>
+				</div>
+			</div>
+		</main>
+{% endblock %}

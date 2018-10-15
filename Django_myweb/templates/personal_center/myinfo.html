@@ -1,0 +1,87 @@
+{% extends 'base1.html' %}
+{% block nav %}
+
+	<div class="c-user__control-panel">
+        <div class="c-user-control">
+            <header class="c-user-control__header">
+                <h4 class="c-user-control__title">个人信息设置</h4></header>
+            <div class="c-user-control__content">
+
+                <form class="c-account-form c-account-form--update-career" action="/personal/myinfo_handler/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+
+                    <div class="c-account-form__group"><label class="c-account-form__label is-required" for="industry">所属行业</label>
+                        <select class="c-account-form__field" id="industry" name="industry" required>
+                            <option class="c-accoutn-form__option"  selected></option>
+                            <option  name="1">IT/互联网</option>
+                            <option  name="1">金融/保险</option>
+                            <option  name="1">电商</option>
+                            <option  name="1">游戏</option>
+                            <option  name="1">新媒体</option>
+                            <option  name="1">广告</option>
+                            <option  name="1">旅游/出行/住宿</option>
+                            <option  name="1">直播/网红</option>
+                            <option  name="1">母婴/亲子</option>
+                            <option  name="1">教育/培训</option>
+                            <option  name="1">汽车</option>
+                            <option  name="1">共享系列</option>
+                            <option  name="1">文化/传媒</option>
+                            <option  name="1">婚庆/摄影</option>
+                            <option  name="1">餐饮/食品</option>
+                            <option  name="1">房产/家居</option>
+                            <option  name="1">通信</option>
+                            <option  name="1">娱乐/休闲</option>
+                            <option  name="1">体育健身</option>
+                            <option  name="1">家电/数码</option>
+                            <option  name="1">企业服务</option>
+                            <option  name="1">医药/保健</option>
+                            <option  name="1">化妆/美容</option>
+                            <option  name="1">服装/鞋类</option>
+                            <option  name="1">智能产业</option>
+                            <option  name="1">生活/办公用品</option>
+                            <option  name="1">制造业</option>
+                            <option  name="1">其他</option>
+                        </select>
+                    </div>
+                    <div class="c-account-form__group"><label class="c-account-form__label is-required" for="company">公司名称</label>
+                        <input class="c-account-form__field" id="company" name="company" value="" placeholder="请输入您的公司名称">
+                    </div>
+                    <div class="c-account-form__group"><label class="c-account-form__label is-required" for="brand">品牌名称</label><input class="c-account-form__field" id="brand" name="brand" value="新媒体" placeholder="请输入您的品牌名称">
+                    </div>
+                    <div class="c-account-form__group"><label class="c-account-form__label is-required" for="brand">职位</label>
+                        <input class="c-account-form__field" id="name" name="position" value="经理" placeholder="请输入您的职位">
+                    </div>
+                    <div class="c-account-form__group"><label class="c-account-form__label" for="brand">昵称</label>
+                        <input class="c-account-form__field" id="name" name="atname" value="HAHA" placeholder="请输入您的真实姓名">
+                    </div>
+
+                     <div class="c-account-form__group"><label class="c-account-form__label" for="brand">上传头像:<input name="mypic"  type="file"></label>
+
+                    </div>
+
+
+                    <div class="c-account-form__group"><label class="c-account-form__label" for="phone-number">微信</label>
+                        <input class="c-account-form__field" id="phone-number" placeholder="请输入您的微信号码" value="" name="wechat">
+                    </div>
+                    <div class="c-account-form__group"><label class="c-account-form__label" for="qq">QQ</label>
+                        <input class="c-account-form__field" id="qq" type="qq" placeholder="请输入您的QQ号码" value="" name="qq">
+                    </div>
+                    <div class="c-account-form__group"><label class="c-account-form__label" for="email">邮箱</label>
+                        <input class="c-account-form__field" id="email" type="email" value="" placeholder="请输入您的邮箱地址" name="email">
+                    </div>
+
+
+                    <div class="c-account-form__group">
+                        <label class="c-account-form__label" for="intro">企业简介</label>
+                        <textarea class="c-account-form__field" id="intro" name="cprofile" placeholder="请输入您的企业简介">
+                    </textarea>
+                    </div>
+                    <button class="c-btn c-btn-theme c-btn-radius c-account-form__submit">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

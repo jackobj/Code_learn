@@ -1,0 +1,340 @@
+{% extends 'zj_demand/black_1.html' %}
+
+    {% block content %}
+
+		<main class="page-main" >
+			<div class="c-new-post">
+				<header class="c-new-post__header">
+					<h1 class="c-new-post__title">发布需求：</h1></header>
+				<form  action="/demand_handler/" method="post" enctype='multipart/form-data' name="form1">
+
+                    {% csrf_token %}
+					<div class="c-new-post__form-wrapper">
+
+                          <div class="c-new-post__form-field c-new-post__form-field--aim-area is-required" >
+                            <label class="c-new-post__field-name">选择发布分类</label>
+							<div class="select-area" >
+
+                                <select class="c-new-post__field-input"  name="first" id="first" onchange="changeSelect(this.selectedIndex)">
+                                    <!--<option  name="first_op_name"  value=""></option>-->
+                                </select>
+
+                                <select class="c-new-post__field-input"  name="second" id="second">
+                                      <!--<option name="second_op_name" value=""></option>-->
+                                </select>
+                            </div>
+						</div>
+                        <script type="text/javascript">
+     var arr_first = ["请选择发布类型","宠物","房产","二手市场","寻人寻物","我要人脉","本地生活"];
+     var arr_second = [
+                     ["请选择城类型/选项"],
+                     ["出售宠物","购买宠物"],
+                     ['我要租房','我要转租','我要合租'],
+                     ['我要买卖', '手机电脑', '电动摩托', '服装箱包', '家具家电', '票务图书', '其他'],
+                     ['寻人启示', '生活人脉', '其他人脉'],
+                     ['贷款信用卡', '聚会活动', '美食优惠',],
+                 ];
+     //网页加载完成，初始化菜单
+     window.onload = init();changeSelect(index);//传入函数地址
+     function init(){
+         //首先获取对象
+         var first = document.form1.first;
+         var second = document.form1.second;
+
+         //指定省份中<option>标记的个数
+         first.length = arr_first.length;
+
+         //循环将数组中的数据写入<option>标记中
+         for(var i=0;i<arr_first.length;i++){
+             first.options[i].text = arr_first[i];
+             first.options[i].value = arr_first[i];
+             first.options[i].setAttribute('name','first_op_name');
+         }
+
+         //修改省份列表的默认选择项
+        var index = 0;
+         first.selectedIndex = index;
+
+         //指定城市中<option>标记的个数
+         second.length = arr_second[index].length;
+         //循环将数组中的数据写入<option>标记中
+         for (var j = 0; j<arr_second[index].length;j++) {
+             second.options[j].text = arr_second[index][j];
+
+         }
+
+     }
+
+     function  changeSelect(index){
+         //选择对象
+         var second = document.form1.second;
+
+         //var first = document.form1.first;
+         //修改省份列表的选择项
+         first.selectedIndex = index;
+         //修改城市选项
+         //second.selectedIndex = index2;
+         //指定城市中<option>标记的个数
+         second.length = arr_second[index].length;
+
+         //循环将数组中的数据写入<option>标记中
+         for (var j = 0; j<arr_second[index].length;j++) {
+             second.options[j].text = arr_second[index][j];
+             second.options[j].value = arr_second[index][j];
+             second.options[j].setAttribute('name','second_op_name');
+         }
+     }
+
+
+</script>
+
+						<div class="c-new-post__form-field c-new-post__form-field--post-title is-required">
+                            <label class="c-new-post__field-name" for="post-title">帖子标题</label>
+                            <input class="c-new-post__field-input" id="post-title" name="title" value="" placeholder="示例：提供10元优惠券，寻求线上推广合作" maxlength="50" required>
+                        </div>
+
+                        <div class="c-new-post__form-field c-new-post__form-field--demand-details is-required">
+                            <label class="c-new-post__field-name">帖子详情描述</label>
+                            <textarea class="c-new-post__field-input c-new-post__field-textarea" rows="10" name="details" placeholder="请简要概括您的需要详情" >
+                            </textarea>
+                        </div>
+
+
+						<div class="c-new-post__form-field c-new-post__form-field--brand-owner is-required">
+                            <label class="c-new-post__field-name">套餐类型</label>
+							<div class="c-new-post__entry-group">
+								<div class="c-new-post__entry-item"><input class="c-new-post__entry-check" id="checkbox1" type="radio" name="taocan" value="套餐一" checked required><label class="c-new-post__entry-name" for="brand-owner1">包月89元/月</label></div>
+								<div class="c-new-post__entry-item"><input class="c-new-post__entry-check" id="checkbox2" type="radio" name="taocan" value="套餐二" required><label class="c-new-post__entry-name" for="brand-owner2">包季度299元/月</label></div>
+                                <div class="c-new-post__entry-item"><input class="c-new-post__entry-check" id="checkbox3" type="radio" name="taocan" value="套餐三" required><label class="c-new-post__entry-name" for="brand-owner2">包年899元/年</label>
+                                </div>
+							</div>
+						</div>
+                        <script>
+                            $(function () {
+             /*$("#checkbox1").click(function(){
+                  if($(this).attr("checked") == true){
+                      $("#checkbox2").attr("checked",false);
+                  }
+              });
+              $("#checkbox2").click(function(){
+                  if($(this).attr("checked") == true){
+                      $("#checkbox1").attr("checked",false);
+1                 }
+             });*/
+                                 var allBox = $(":checkbox");
+                                 allBox.click(function (){
+                                    if(this.checked){
+                                        allBox.removeAttr("checked");
+                                        $(this).attr("checked", "checked");
+                                    }
+                                });
+                                });
+                        </script>
+                            {% for p in person %}
+						<div class="c-new-post__form-field c-new-post__form-field--industry is-required">
+                            <label class="c-new-post__field-name" for="industry">所属行业</label>
+                            <label style="height: 20px;width: 50px;">{{ p.industry }}</label>
+						</div>
+                            {% endfor %}
+                <!--地域选择-->
+                        <div class="c-new-post__form-field c-new-post__form-field--aim-area is-required" >
+                            <label class="c-new-post__field-name">地域选择</label>
+							<div class="select-area"  >
+
+                                <select class="c-new-post__field-input"  name="province" id="s1">
+                                    <option></option>
+                                </select>
+                                <select class="c-new-post__field-input"  name="city" id="s2">
+                                      <option></option>
+                                </select>
+                                <select class="c-new-post__field-input" name="town" id="s3">
+                                     <option></option>
+                                </select>
+                                <input id="address" name="address"  value="" style="display: none"/>
+
+                            </div>
+						</div>
+
+                         <script type="text/javascript" src="/static/geo.js" charset="utf8"></script>
+                        <script type="text/javascript" src="/static/jquery/jquery-1.7.1.min.js"></script>
+
+                        <script>
+                            //这个函数是必须的，因为在geo.js里每次更改地址时会调用此函数
+                            window.onload=setup();preselect('湖北省');promptinfo();
+                            function promptinfo(){
+                                var address = document.getElementById('address');
+                                var s1 = document.getElementById('s1');
+                                var s2 = document.getElementById('s2');
+                                var s3 = document.getElementById('s3');
+                                address.value = s1.value + s2.value + s3.value;
+                            }
+
+                        </script>
+                    </div>
+                        <div class="c-new-post__form-field c-new-post__form-field--nickname  is-required">
+                            <label class="c-new-post__field-name" for="nickname">称呼</label>
+                            <input class="c-new-post__field-input" id="nickname" name="demand_name" value="{{ user_industry.industry }}" placeholder="怎样称呼您" required>
+                        </div>
+
+						<div class="c-new-post__form-field c-new-post__form-field--wechat is-required">
+                            <label class="c-new-post__field-name" for="wechat">增值服务</label>
+                            <input class="c-new-post__field-input" id="wechat" name="add_service" value="" placeholder="请输入增值服务金额">
+                        </div>
+
+						<div class="c-new-post__form-field c-new-post__form-field--phone"><label class="c-new-post__field-name" for="phone">联系方式</label><input class="c-new-post__field-input" id="phone" type="number" name="demand_tel" value="18926039854" placeholder="请输入电话号码" ></div>
+
+						<div class="c-new-post__form-field c-new-post__form-field--qq"><label class="c-new-post__field-name" for="qq">赏金</label><input class="c-new-post__field-input" id="qq" type="number" name="bounty" value="" placeholder="请输入悬赏金额" ></div>
+
+
+                        <div class="c-new-post__form-field c-new-post__form-field--nickname  is-required">
+                            <label for="exampleInputFile">上传图片：</label>
+                                <input type="file" id="exampleInputFile" name="images">
+                        </div>
+
+                        <div class="c-new-post__form-field c-new-post__form-field--nickname  is-required">
+                            <label for="exampleInputFile">上传文件：</label>
+                                <input type="file" id="exampleInputFile" name="files">
+                        </div>
+
+
+						<div class="c-new-post__form-field c-new-post__form-field--deadline is-required"><label class="c-new-post__field-name" for="deadline">截止时间</label>
+
+
+							<input class="c-new-post__field-input " id="timer1" name="demand_date" value="" placeholder="请选择日期时间" onclick="timer()" readonly required>
+						</div>
+
+
+
+			            <script>
+				function timer(){
+
+					$("#schedule-box").show();
+				}
+			</script>
+
+						<div class="c-new-post__form-field c-new-post__form-field--deadline is-required">
+
+							<div id='schedule-box' class="boxshaw" style="display: none;">
+                            </div>
+						</div>
+
+		        <link rel="stylesheet" href="/static/myweb2/css_font_context.css"><style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		#schedule-box{
+			width: 320px;
+			/*margin: 0 auto;*/
+			padding: 35px 20px;
+			font-size: 13px;
+			    margin-left: 122px;
+		}
+		.schedule-hd{
+			display: flex;
+			justify-content: space-between;
+			padding: 0 15px;
+		}
+		.today{
+			flex: 1;
+			text-align: center;
+		}
+		.ul-box{
+			overflow: hidden;
+		}
+		.ul-box > li{
+			float: left;
+			width: 14.28%;
+			text-align: center;
+			padding: 5px 0;
+		}
+		.other-month{
+			color: #999999;
+		}
+		.current-month{
+			color: #333333;
+		}
+		.today-style{
+			border-radius: 50%;
+			background: #58d321;
+		}
+		.arrow{
+			cursor: pointer;
+		}
+		.dayStyle{
+			display: inline-block;
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 35px;
+			cursor: pointer;
+		}
+		.current-month > .dayStyle:hover{
+			background: #00BDFF;
+			color: #ffffff;
+		}
+		.today-flag{
+			background: #dde0e0;
+			color: #fff;
+		}
+		.boxshaw{
+			box-shadow: 2px 2px 15px 2px #e3e3e3;
+		}
+		.selected-style {
+			background: #00BDFF;
+			color: #ffffff;
+		}
+		#h3Ele{
+			text-align: center;
+			padding: 10px;
+		}
+	</style>
+
+
+
+                <script src="/static/schedule.js"></script>
+                <script>
+	var mySchedule = new Schedule({
+		el: '#schedule-box',
+		//date: '2018-9-20',
+		clickCb: function (y,m,d) {
+			document.querySelector('#timer1').value = y+'-'+m+'-'+d;
+	$("#schedule-box").hide();
+		},
+		nextMonthCb: function (y,m,d) {
+			document.querySelector('#timer1').value = y+'-'+m+'-'+d;
+
+		},
+		nextYeayCb: function (y,m,d) {
+			document.querySelector('#timer1').value = y+'-'+m+'-'+d;
+
+		},
+		prevMonthCb: function (y,m,d) {
+			document.querySelector('#timer1').value = y+'-'+m+'-'+d;
+
+		},
+		prevYearCb: function (y,m,d) {
+			document.querySelector('#timer1').value = y+'-'+m+'-'+d;
+
+		}
+
+	});
+</script>
+
+                    <button class="c-btn c-btn-theme c-btn-radius c-new-post__form-submit">发布</button>
+
+                </form>
+			</div>
+		</main>
+        <script src="/static/jquery.js"></script>
+		<script src="/static/myweb2/flatpicker.js"></script>
+	    <script src="/static/myweb2/picker.js%3Fid=1010"></script>
+{% endblock %}
+
+
+
+

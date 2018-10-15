@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>论坛管理系统</title>
+		<meta name="keywords" content=""/>
+		<meta name="description" content=""/>
+		<link rel='stylesheet' href='css/bootstrap.css'>
+		
+		<script src="js/jquery-1.9.1.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<style>
+			.pagination{
+				margin-top:0px;
+			}
+			.panel-heading h1{
+				margin-bottom:20px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<nav class="navbar navbar-default">
+  			<div class="container-fluid">
+    				<!-- Brand and toggle get grouped for better mobile display -->
+    					<div class="navbar-header">
+      						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        						<span class="sr-only">Toggle navigation</span>
+        						<span class="icon-bar"></span>
+        						<span class="icon-bar"></span>
+        						<span class="icon-bar"></span>
+      						</button>
+      						<a class="navbar-brand" href="#">论坛管理系统</a>
+    					</div>
+
+    				<!-- Collect the nav links, forms, and other content for toggling -->
+    				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      					<ul class="nav navbar-nav">
+        					<li class="active"><a href="#">内容审核<span class="sr-only">(current)</span></a></li>
+        					<li><a href="#">论坛管理</a></li>
+        					<li><a href="#">数据统计</a></li>
+      					</ul>
+      					
+     				 	<ul class="nav navbar-nav navbar-right">
+						<li>
+							<form class="navbar-form navbar-left" role="search">
+        							<div class="form-group">
+          								<input type="text" class="form-control" placeholder="搜索">
+        							</div>
+        						</form>
+						</li>
+        					<li><a href="#">未读信息 <span class="badge">5</span></a></li>
+        					<li class="dropdown">
+          						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin one<span class="caret"></span></a>
+          						<ul class="dropdown-menu" role="menu">
+            							<li><a href="#">我删除的项目</a></li>
+            							<li><a href="#">我修改的项目</a></li>
+            							<li><a href="#">我恢复的项目</a></li>
+            							<li class="divider"></li>
+            							<li><a href="#">注销</a></li>
+          						</ul>
+        					</li>
+      					</ul>
+    				</div><!-- /.navbar-collapse -->
+  			</div><!-- /.container-fluid -->
+		</nav>
+		<aside class="col-xs-12 col-sm-2 container">
+			<ul class="list-group">
+  				<li class="list-group-item active">主题审核</li>
+  				<li class="list-group-item">回复审核</li>
+  				<li class="list-group-item">用户管理</li>
+  				<li class="list-group-item">版主审核</li>
+  				<li class="list-group-item">回复审核日志</li>
+				<li class="list-group-item">用户管理日志</li>
+			</ul>
+		</aside>
+		<main class="col-xs-12 col-sm-10 container">
+			<div class="panel panel-default">
+  				<div class="panel-heading">
+    					<h1 class="panel-title">主题审核</h1>
+					全选:<input type="checkbox"/>
+					<button class="btn btn-success">通过</button>
+					<button class="btn btn-primary">恢复</button>
+					<button class="btn btn-danger">删除</button>
+					<ul class="pagination pull-right">
+    						<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    						<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+    						<li ><a href="#">2<span class="sr-only">(current)</span></a></li>
+						<li ><a href="#">3<span class="sr-only">(current)</span></a></li>
+						<li ><a href="#">4<span class="sr-only">(current)</span></a></li>
+						<li><a href="#">5<span class="sr-only">(current)</span></a></li>
+						<li><a href="#" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a></li>
+  					</ul>
+  				</div>
+  				<div class="panel-body">
+    					<table class="table">
+						<tr>
+							<th></th>
+							<th>审核状态</th>
+							<th>标题</th>
+							<th>作者</th>
+							<th>创建时间</th>
+							<th>详情</th>
+						</tr>
+						<tr>
+							<td><input type="checkbox"/></td>
+							<td><span class="label label-default">未审核</span></td>
+							<td><a href="#">战士输出装备问题探讨</a></td>
+							<td><a href="#">庇护祝福</a></td>
+							<td>2013年12月18日 10:52</td>
+							<td>
+								<a href="#" data-toggle="collapse" data-target="#collapseTr">
+									<span class="glyphicon glyphicon-chevron-down" ></span>
+								</a>
+							</td>
+						</tr>
+						<tr id="collapseTr" class="collapse">
+							<td colspan=6>
+								在MOP之前，坦克们在保持仇恨和拉小怪的手段上都有多种选择，而在有效降低承受的伤害方面则没有太多的选择。幸运的是，这种情况已经改变。如果能够“正确使用技能”，我们可以有效地减少承受的伤害，就像DPS通过正确使用技能来增加伤害一样。而什么是“正确使用技能”呢？答案基本可以概括为频繁使用[盾牌猛击]、[复仇]来获得怒气，然后使用这些怒气来施放“[盾牌格挡]”以及[盾牌屏障]，从而降低你自己承受的伤害。此外，这个机制也让“命中”和“精准”变成了非常有价值的属性。 
+							</td>
+						</tr>
+					</table>
+  				</div>
+			</div>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>我的播放器</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link rel="stylesheet" href="jquery.mobile.min.css">
+		<script src="jquery-3.3.js"></script>
+		<script src="jquery.mobile.min.js"></script>	
+		<style>
+			.ui-bar-e {
+    				background-image: linear-gradient(#5f500c,#9b7efb);
+			}
+			img{
+				width:100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="a" data-role="page">
+			<div data-role="header" data-theme="b" data-position="fixed">
+				<a href="#">返回</a>
+				<h3>我的播放器</h3>
+			</div>
+			<div data-role="content">
+				<img src="images1/tu1.png">
+				<audio src="yifenqian.mp3" id="audio" controls="true"></audio>
+				 <script>
+                        $("#play").click(function(){
+                                /*console.log($("#audio"));
+                                $("#audio")[0].play();*/
+                                $("#audio").trigger("play");
+                        });
+                        $("#pause").click(function(){
+                                $("#audio")[0].pause();
+                        });
+                        $("#muted").click(function(){
+                                $("#audio")[0].muted=!($("#audio")[0].muted);           
+                        });
+                        $("#volup").click(function(){
+					$("#audio")[0].muted=false;
+					if($("#audio")[0].volume<1){
+                                
+                                        $("#audio")[0].volume+=0.1;
+                                }
+                                $("#audio")[0].volume=$("#audio")[0].volume>=1?1:$("#audio")[0].volume;
+                                /*
+                                        if($("#audio")[0].volume>=1){
+                                                $("#audio")[0].volume=1;
+                                        }
+                                */
+                        });
+                        $("#voldown").click(function(){
+                                
+                                $("#audio")[0].volume-=0.1;
+                                $("#audio")[0].volume=$("#audio")[0].volume<0?0:$("#audio")[0].volume;
+                        });
+                </script>
+
+				<div data-role="controlgroup" data-type="horizontal">
+					<a data-role="button" id="play">播放</a>
+					<a data-role="button" id="pause">暂停</a>
+					<a data-role="button" id="muted">静音</a>
+				</div>
+				<div data-role="controlgroup" data-type="horizontal">
+					<a data-role="button" id="volup">音量+</a>
+					<a data-role="button" id="voldown">音量-</a>
+				</div>
+			</div>
+			<div data-role="footer" data-theme="b" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#" data-icon="home">首页</a></li>
+						<li><a href="#" data-icon="list">列表</a></li>
+						<li><a href="#" data-icon="gear">设置</a></li>
+						<li><a href="#" data-icon="star">我的</a></li>		
+					</ul>
+				</div>
+			</div>
+		</div>
+		</script>
+		
+	</body>
+</html>

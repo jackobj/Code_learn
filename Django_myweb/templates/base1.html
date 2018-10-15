@@ -1,0 +1,44 @@
+{% extends 'zj_demand/black.html' %}
+{% block content %}
+      <main class="page-main">
+			<div class="clearfix c-user">
+				<div class="c-user__aside">
+					<nav class="c-user-sidenav">
+						<header class="c-user-sidenav__header">
+							<h3 class="c-user-sidenav__title">个人中心</h3>
+                        </header>
+						<ul class="list-unstyled c-user-sidenav__nav-list">
+
+                            <li class="c-user-sidenav__nav-item " {% if s == 1 %} id="abcd" {% endif %}>
+								<a class="c-user-sidenav__nav-link" href="/personal/user_center/">我的资料</a>
+							</li>
+                            <li class="c-user-sidenav__nav-item " {% if s == 2 %} id="abcd" {% endif %}>
+								<a class="c-user-sidenav__nav-link" href="/personal/myinfo/">个人中心</a>
+                            </li>
+							<li class="c-user-sidenav__nav-item " {% if s == 3 %} id="abcd" {% endif %}>
+								<a class="c-user-sidenav__nav-link" href="/personal/vip/">我的特权</a>
+							</li>
+
+							<li class="c-user-sidenav__nav-item " {% if s == 4 %} id="abcd" {% endif %}>
+								<a class="c-user-sidenav__nav-link" href="/personal/my_message/">我的消息</a>
+							</li>
+							<li class="c-user-sidenav__nav-item " {% if s == 5 %} id="abcd" {% endif %}>
+								<a class="c-user-sidenav__nav-link" href="/personal/my_task/">我的任务</a>
+                            </li>
+
+                            <li class="c-user-sidenav__nav-item " {% if s == 6 %} id="abcd" {% endif %}>
+								<a class="c-user-sidenav__nav-link" href="/personal/xiugai_password/">修改密码</a>
+                            </li>
+                             <li class="c-user-sidenav__nav-item " >
+								<a class="c-user-sidenav__nav-link" href="/personal/clear_login/">退出登录</a>
+                            </li>
+						</ul>
+					</nav>
+				</div>
+
+                {% block nav %}
+
+                {% endblock %}
+			</div>
+		</main>
+{% endblock %}

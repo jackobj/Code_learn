@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="/static/bootstrap.css">
+		<link rel="stylesheet" href="/static/main.css">
+        <link rel="stylesheet" href="/static/jquery/bootstrap/css/bootstrap.min.css">
+		<!--<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">-->
+		<!--<link rel="stylesheet" href="/static/bootstrap/js/bootstrap.js">-->
+
+				<link rel="stylesheet" href="/static/main.css">
+
+				<link rel="stylesheet" href="/static/y.css">
+		  <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+		<title>快人脉</title>
+
+<meta name="keywords" content="#" />
+<meta name="description" content="#" />
+<style>
+        #abcd{
+        color:#1bb28a;
+        background-color:#ececec
+        }
+</style>
+
+
+
+	</head>
+	<body>
+		<div class="c-top-bar">
+			<div class="c-top-bar__nav">
+
+                <div style="float:left;color: #fff;font-size: 14px;margin-top: 6px;">找需求,上快人脉之家
+                </div>
+
+				<ul class="list-inline c-top-bar__nav-list">
+                    <li class="list-inline-item c-top-bar__nav-item">
+                        {% if user_tel == None  %}
+                            <a class="c-top-bar__nav-link" href="/login/login/">登录</a>
+                        {% elif user_tel != None and user != None %}
+                            <a class="c-top-bar__nav-link" href="/personal/user_center/">{{ user }}</a>
+                        {% elif user_tel != None and user == None %}
+                             <a class="c-top-bar__nav-link" href="/personal/user_center/">{{ user_tel }}</a>
+                        {% endif %}
+
+					</li>
+                    <li class="list-inline-item c-top-bar__nav-item">
+                        {% if user_tel == None %}
+                            <a class="c-top-bar__nav-link" href="/login/register/"> 注册</a>
+                        {%  else %}
+                            <a class="c-top-bar__nav-link" href="/personal/my_message/">消息</a>
+                        {% endif %}
+					</li>
+				</ul>
+			</div>
+		</div>
+		<header class="c-page-header">
+			<nav class="c-page-header__nav">
+				<a class="c-page-header__logo" href="/index/"><img class="c-page-header__logo-img" src="/static/img/logo1.png" alt="企业Logo"></a>
+				<ul class="list-inline c-page-header__nav-list">
+				</ul>
+				{% block find %}
+				{% endblock %}
+
+				<a class="c-page-header__new-post" href="/publish_type/">发布合作</a>
+			</nav>
+        </header>
+
+    {% block content %}
+
+                {% block nav %}
+                {% endblock %}
+
+    {% endblock %}
+
+ 		<footer class="c-page-footer">
+            <nav class="c-page-footer__row c-page-footer__about">
+				<a class="c-page-footer__text c-page-footer__link" href="/index/">首页&nbsp;&#47;</a>
+				<a class="c-page-footer__text c-page-footer__link" href="#">&nbsp;免责声明&nbsp;&#47;</a>
+				<a class="c-page-footer__text c-page-footer__link" href="#">&nbsp;关于我们</a>
+			</nav>
+			<p class="c-page-footer__row c-pagte-footer__contact">
+                <span class="c-page-footer__contact-title c-page-footer__text">关于我们&nbsp;&#124;</span>
+                <span class="c-page-footer__text">&nbsp;免责声明&nbsp;&#47;</span>
+                <span class="c-page-footer__text">&nbsp;联系方式&nbsp;&#47;</span>
+                <span class="c-page-footer__text">&nbsp;客服QQ：XXXXXXXXX&nbsp;</span>
+            </p>
+
+          <hr class="c-page-footer__separator">
+			<p class="c-page-footer__row c-page-footer__certification"><span class="c-page-footer__text"快人脉有限公司&nbsp;&#124;</span><span class="c-page-footer__text">&nbsp;鄂xxx备12345678号-2</span>
+            </p>
+		</footer>
+		<script src="/static/js/jquery.js"></script>
+		<script src="/static/popper.js"></script>
+		<script src="/static/js/bootstrap.js"></script>
+
+
+<span style="display: none;">
+<!-- 统计代码 -->
+<script src="/static/js/last.js" language="JavaScript"></script>
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?42bf2023872596714259937eaebb4ab5";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</span>
+	</body>
+
+</html>

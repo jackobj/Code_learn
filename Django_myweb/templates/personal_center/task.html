@@ -1,0 +1,109 @@
+{% extends 'base1.html' %}
+{% block nav %}
+  <div class="c-user__control-panel">
+        <div class="c-user-control c-user-tab c-user-tab--task">
+            <header class="c-user-tab__header">
+                <ul class="nav nav-tabs c-user-tab__nav-list" id="user-task-tab" role="tablist">
+                    <li class="nav-item c-user-tab__nav-item">
+                        <a class="nav-link c-user-tab__nav-link active" id="new-task-tab" data-toggle="tab" href="#new-task-content" role="tab" aria-controls="新任务" aria-selected="true">待审核</a>
+                    </li>
+                    <li class="nav-item c-user-tab__nav-item">
+                        <a class="nav-link c-user-tab__nav-link" id="in-task-tab" data-toggle="tab" href="#in-task-content" role="tab" aria-controls="进行中任务" aria-selected="false">审核通过</a>
+                    </li>
+                    <li class="nav-item c-user-tab__nav-item">
+                        <a class="nav-link c-user-tab__nav-link" id="finished-task-tab" data-toggle="tab" href="#finished-task-content" role="tab" aria-controls="已完成任务" aria-selected="false">未通过</a>
+                    </li>
+                </ul>
+            </header>
+
+
+            <div class="tab-content c-user-tab__tab-content" id="user-task-tab-content">
+                <!--1 wei2 de -->
+                <div class="tab-pane c-user-tab__tab-pane active" id="new-task-content" role="tabpanel" aria-labelledby="new-task-tab">
+                    <ul class="list-unstyled c-user-todolist c-user-todolist--task">
+                        {% for each in page %}
+                        <li class="c-user-todolist__item">
+                            <div class="c-user-todolist__item-overview"><img class="c-user-todolist__item-avatar" src="/{{ each.image }}" alt="任务头像">
+                                <div class="c-user-todolist__item-synopsis">
+                                    <h5 class="c-user-todolist__item-title">标题:{{ each.title }}</h5>
+                                    <p class="c-user-todolist__item-desc">内容描述:{{ each.details }}</p>
+                                    <p class="c-user-todolist__item-desc">截至时间:{{ each.date }}</p>
+                                </div>
+                            </div>
+                            <div class="c-user-todolist__item-action">
+                                <a class="c-btn c-btn-theme c-btn-radius c-user-todolist__item-enable" href="#">待审核</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                   <nav aria-label="Page navigation">
+                    <ul class="pagination">
+
+                        <li>
+                            {%  if page.has_previous %}
+                                <a href="/personal/my_task/{{ page.previous_page_number }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            {% endif %}
+                        </li>
+
+                        {% for index in page.paginator.page_range %}
+                        <li><a href="/personal/my_task/{{ index }}">{{ index }}</a></li>
+                       {% endfor %}
+
+
+                        <li>
+                            {% if page.has_next %}
+                                <a href="/personal/my_task/{{ page.next_page_number}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
+                </div>
+                <!--2 wei 1 de -->
+                <div class="tab-pane c-user-tab__tab-pane" id="in-task-content" role="tabpanel" aria-labelledby="in-task-tab">
+                    <ul class="list-unstyled c-user-todolist c-user-todolist--task">
+                        {% for de1 in demand1 %}
+                        <li class="c-user-todolist__item">
+                            <div class="c-user-todolist__item-overview"><img class="c-user-todolist__item-avatar" src="/{{ de1.image }}" alt="任务头像">
+                                <div class="c-user-todolist__item-synopsis">
+                                    <h5 class="c-user-todolist__item-title">标题:{{ de1.title }}</h5>
+                                    <p class="c-user-todolist__item-desc">内容描述:{{ de1.details }}</p>
+                                    <p class="c-user-todolist__item-desc">截至时间:{{ de1.date }}</p>
+                                </div>
+                            </div>
+                            <div class="c-user-todolist__item-action">
+                                <a class="c-btn c-btn-theme c-btn-radius c-user-todolist__item-enable" href="#">审核通过</a>
+                            </div>
+									</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!--3 wei 3de -->
+                <div class="tab-pane c-user-tab__tab-pane" id="finished-task-content" role="tabpanel" aria-labelledby="finished-task-tab">
+                    <ul class="list-unstyled c-user-todolist c-user-todolist--task">
+                        {% for de3 in demand3 %}
+                        <li class="c-user-todolist__item">
+                            <div class="c-user-todolist__item-overview"><img class="c-user-todolist__item-avatar" src="/{{ de3.image }}" alt="任务头像">
+                                <div class="c-user-todolist__item-synopsis">
+                                   <h5 class="c-user-todolist__item-title">标题:{{ de3.title }}</h5>
+                                    <p class="c-user-todolist__item-desc">内容描述:{{ de3.details }}</p>
+                                    <p class="c-user-todolist__item-desc">截至时间:{{ de3.date }}</p>
+                                </div>
+                            </div>
+                            <div class="c-user-todolist__item-action">
+                                <a class="c-btn c-btn-theme c-btn-radius c-user-todolist__item-enable" href="#">未通过</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% extends 'zj_demand/black_1.html' %}
+    {% block content %}
+        <main class="page-main">
+            <script>
+                window.onload = function demand() {
+                    alert('评论称功！');
+                    setTimeout(function () {
+                        location.href = 'http://127.0.0.1:8000/commet/'
+                    },2000);
+                }
+            </script>
+        </main>
+   {% endblock %}
+

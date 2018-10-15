@@ -1,0 +1,78 @@
+﻿header{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    color:#fff;
+    background-color: #f00;
+    border:none;
+    border-bottom:3px solid green;
+}
+article{
+	border:1px solid #ddd;
+	border-top:none;
+	padding-left:10px;
+	margin-bottom:20px;
+}
+article footer .img-circle{
+	width:40px;
+}
+.breadcrumb {
+    
+    background-color: #fff;
+    border-bottom:2px solid #ddd;
+}
+section{
+	margin-top:20px;
+	
+}
+h3{
+	padding-top:10px;
+	margin-top:0px;
+}
+time{
+	margin-left:2%;
+	margin-right:2%;
+}
+.bow{
+	width:52px;
+	height:30px;
+	background:#fff url(../images/bow.png) no-repeat 50%  50%;
+	
+	margin:-40px auto 0;
+	
+}
+#foot_con{
+	height:135px;
+	padding-left:0px;
+	padding-right:0px;
+	background:url(../images/emerald.png) repeat;
+}
+@media screen and (max-width:768px){
+	#foot_con{
+		height:405px;
+	}
+}
+}
+.semire{
+	
+	height:16px;
+	background:url(../images/semicircle.png) repeat-x;
+}
+#foot_con h3{
+	text-shadow:1px 1px 0 gray;
+	background:url(../images/dashed-h.png) repeat-x 0 60%;
+	
+}
+#foot_con h3 span{
+	background:url(../images/emerald.png);
+	padding-right:20px;
+}
+#foot_con p{
+	color:white;
+}
+.content_one{
+	margin-top:10px;
+	
+	background:url(../images/dashed-v.png) repeat-y 100% 0;
+}

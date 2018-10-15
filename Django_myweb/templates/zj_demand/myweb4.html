@@ -1,0 +1,290 @@
+{% extends 'zj_demand/black_1.html' %}
+    {% block content %}
+
+
+        <main class="page-main page-main--post">
+			<div class="c-post clearfix">
+				<div class="c-post__main">
+
+					<div class="c-post-overview">
+                        {% for de in dem %}
+						<header class="c-post-overview__header">
+							<h3 class="c-post-overview__title">{{ de.title }}</h3><small class="c-post-overview__status">
+                            <span class="c-post-overview__brand">{{ de.personal_center__brand }}</span>
+                            <span class="c-post-overview__job">{{ de.personal_center__position }}</span>
+                            <time class="c-post-overview__time">联系方式:{{ de.demand_tel }}</time>
+                            <button class="c-btn c-btn-text glyphicon glyphicon-heart" type="button">收藏
+                            </button>
+                            <span class="c-post-overview__reply">回复数{{ de.au }}</span>
+                            <span class="c-post-overview__visit glyphicon glyphicon-eye-open">浏览量{{ de.onclick }}</span>
+                        </small>
+                        </header>
+						<div class="c-post-overview__main">
+							<p class="c-post-overview__item">
+                                <span class="c-post-overview__item-name">品牌:{{ de.personal_center__brand }}</span>
+                                <span class="c-post-overview__item-value">公司:{{ de.personal_center__company }}</span>
+                                <span class="c-post-overview__item-flag">
+								称呼:{{ de.personal_center__atname }}
+							</span></p>
+							<p class="c-post-overview__item">
+                                <span class="c-post-overview__item-name">详情:{{ de.details }}</span>
+                                <span class="c-post-overview__item-value">
+								赏金:{{ de.bounty }}&nbsp;&nbsp;
+								</span></p>
+							<p class="c-post-overview__item">
+                                <span class="c-post-overview__item-name">地区:{{ de.address }}</span>
+                                <span class="c-post-overview__item-value">
+                                    企业简介:{{ de.personal_center__cprofile }}&nbsp;&nbsp;
+                                </span>
+                            </p>
+							<p class="c-post-overview__item">
+                                <span class="c-post-overview__item-name">截止时间:</span>
+                                <span class="c-post-overview__item-value">{{ de.date }}</span>
+                            </p>
+						</div>
+
+					</div>
+
+					
+					
+					
+					  <script type="text/javascript" src="/static/jquery/jquery-1.7.1.min.js" >
+
+                      </script>
+
+  	<script src="/static/myweb4/layui.js%3Ft=1508154136727" charset="utf-8">
+
+    </script>
+                    <div class="c-post-desc">
+						<div class="c-post-desc__module">
+							<header class="c-post-desc__module-header">
+								<h4 class="c-post-desc__module-title">我们提供</h4></header>
+							<div class="c-post-desc__module-main">
+								<p class="c-post-desc__module-content">第一接单网是BD之家兄弟产品，只做CPA推广，非自然流量，渠道大部分来自QQ群等做任务的人群，所以能接受这种渠道的广告主请联系我们，网址：www.1jiedan.com</p>
+							</div>
+						</div>
+						<div class="c-post-desc__module">
+							<header class="c-post-desc__module-header">
+								<h4 class="c-post-desc__module-title">我们需要</h4></header>
+							<div class="c-post-desc__module-main">
+								<p class="c-post-desc__module-content">需要预付，没有预付的话我们暂时不合作，预付要是消耗不完，会在12小时内完成退款，我们没有复杂的财务流程！！！</p>
+							</div>
+						</div>
+						
+						
+						
+												
+						
+						<div class="c-post-desc__module c-post-desc__module--important">
+							<header class="c-post-desc__module-header">
+								<h4 class="c-post-desc__module-title">特别说明</h4></header>
+							<div class="c-post-desc__module-main">
+								<p class="c-post-desc__module-content">请带上美丽的价格哈，我们会对比其他家哦</p>
+							</div>
+						</div>
+						
+												
+					</div>
+                    <div class="c-post-comment">
+						<header class="c-post-comment__header">
+							<h4 class="c-post-comment__title">合作联系方式</h4></header>
+					<div class="sort_connect">
+                    <p><a onclick="ck()" href="#" id="post_reply">回复可见合作联系方式</a>
+                    </p>
+                    </div>
+					</div>
+			<script>
+				function ck(){
+
+                    var oldtime = "1535558400";
+                    var newtime = "1535945517";
+                    //备注  这里弹窗
+                    if(oldtime<newtime){
+                        alert('当前合作有效期已过！');
+                        return;
+                    }
+			
+					//一般直接写在一个js文件中
+layui.use(['layer', 'form'], function(){
+  //信息框-例4
+    layer.open({
+      type: 2,
+      title: '回复后查看联系方式',
+      shadeClose: true,
+      shade: false,
+      maxmin:false, //开启最大化最小化按钮
+      area: ['500px', '340px'],
+      content: 'http://www.mybdhome.com//demandh.php?id=4694',
+          end: function(){
+       	
+       		
+       			history.go(0);
+          }
+    });
+});
+				}
+			</script>
+						<style>
+							.sort_connect {
+    margin: 5px 0 10px;
+      border: 1px solid #4aa01e;
+    background: #fffdf5;
+    font-size: 14px;
+    line-height: 30px;
+    display: block;
+}
+
+.sort_connect p {
+    padding: 30px 10px 40px;
+        background: url('') no-repeat;
+    text-align: center;
+        margin-bottom: 0rem;
+}  .sort_connect p a {
+       color: #2aa921;
+       font-size: 28px;
+   }
+                        </style>
+					<div class="c-post-comment">
+						<header class="c-post-comment__header">
+							<h4 class="c-post-comment__title">回复</h4>
+                        </header>
+						<div class="c-post-replay__main">
+							<ul class="list-unstyled c-post-comment__list">
+
+                            <!--1-->
+                                {% for each in page %}
+						        <li class="clearfix c-post-comment__item">
+    								<figure class="c-post-comment__figure"><img class="c-post-comment__avatar" src="/{{ each.demand__personal_center__mypic }}" alt="头像">
+										<figcaption class="c-post-comment__caption">用户名:{{ each.demand__personal_center__atname }}
+                                        </figcaption>
+									</figure>
+									<div class="c-post-comment__detail">
+										<p class="clearfix c-post-comment__status">
+                                            <span class="c-post-replay__business">
+                                                <span class="c-post-comment__brand">公司:{{ each.demand__personal_center__company }}</span>
+                                                <span class="c-post-comment__job">职位:{{ each.demand__personal_center__position }}</span>
+                                            </span>
+                                            <time class="c-post-comment__time">评论时间&nbsp;:{{ each.comment_time }}
+                                            </time>
+                                        </p>
+										<p class="c-post-comment__content">评论内容:{{ each.content }}
+                                        </p>
+										<button class="c-btn c-btn-text c-post-comment__reply-action" type="button" onclick="sub()">回复
+                                        </button>
+										
+										<button class="c-btn c-btn-text c-post-comment__reply-collapse" id="h_x_h_t_36518" data-collapse="true" onclick="hxhx(36518)">展开回复
+                                        </button>
+                                    </div>
+										
+                                        <ul class="c-post-comment__reply-list" id="h_x_h_36518">
+                                        </ul>
+                                </li>
+                                    {% endfor %}
+                             <nav aria-label="Page navigation">
+                    <ul class="pagination">
+
+                        <li>
+                            {%  if page.has_previous %}
+                                <a href="/comment/{{ de.id }}/{{ page.previous_page_number }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            {% endif %}
+                        </li>
+
+                        {% for index2 in page.paginator.page_range %}
+                        <li><a href="/comment/{{ de.id }}/{{ index2 }}">{{ index2 }}</a></li>
+                       {% endfor %}
+                        <li>
+                            {% if page.has_next %}
+                                <a href="/comment/{{ de.id }}/{{ page.next_page_number}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
+
+
+                            <form class="c-account-form c-account-form--update-career" action="/comment_handler/" method="post">
+                                {% csrf_token %}
+                                <div style="font-size: 12px;color: #949490;">评论内容:</div>
+                                <br>
+                                <textarea class="c-new-post__field-input c-new-post__field-textarea" style="width: 100%" rows="10" name="content" placeholder="评论还空着呢。。。" >
+                                </textarea>
+
+                                <input type="hidden"  name="demand_id" value="{{ de.id }}" />
+                                <br>
+                                <button class="c-btn c-btn-theme c-btn-radius c-new-post__form-submit" style="margin-left: 20px;colo:#fff;
+                                        background:#1bb28a;...;border-radius:5px;border:none;outline:none;" type="submit">
+                                    提交评论
+                                </button>
+                            </form>
+
+
+
+                                <script>
+                                    function sub(){
+
+                                    }
+                                    function hxh(a){
+			                            layui.use(['layer', 'form'], function(){
+                                            layer.open({
+                                                type: 2,
+                                                title: '回复用户',
+                                                shadeClose: true,
+                                                shade: false,
+                                                maxmin:false, //开启最大化最小化按钮
+                                                area: ['500px', '340px'], content: 'http://www.mybdhome.com//demandhh.php?id=' + a, end: function(){history.go(0);
+                                                }
+                                            });
+                                        })
+                                    }
+
+                                    function hxhx(a){
+                                        if($("#h_x_h_t_"+a).text() == "展开回复"){
+                                            $("#h_x_h_"+a).show();
+                                            $("#h_x_h_t_"+a).text("收起回复");
+                                        }else{
+                                            $("#h_x_h_"+a).hide();
+                                            $("#h_x_h_t_"+a).text("展开回复");
+                                        }
+                                    }
+                                </script>
+                            </ul>
+                        </div>
+                    </div>
+
+
+				</div>
+                <div class="c-post__aside">
+
+					<div class="c-post-aside">
+                        {% for h  in ha %}
+						<div class="c-post-aside__user">
+							<figure class="c-post-aside__figure"><img class="c-post-aside__avatar" src="/{{ h.mypic }}" alt="头像">
+								<figcaption class="c-post-aside__caption">
+									<a class="c-post-aside__user-link" href="/personal/user_center/">{{ h.atname }}</a>
+								</figcaption>
+							</figure>
+						</div>
+                            {% endfor %}
+						<div class="c-post-aside__main">
+							<header class="c-post-aside__header">
+                                <h3 class="c-post-aside__title">最近发表</h3></header>
+							        <nav class="c-post-aside__nav">
+								        <ol class="list-unstyled c-post-aside__nav-list">
+                                             {% for b in bo %}
+                                            <li class="c-post-aside__nav-item">
+										    <a class="c-post-aside__nav-link" href="/comment/{{ b.demand__id }}">{{ b.demand__title }}</a>
+                                            {{ b.demand__date }}
+									        </li>
+                                            {% endfor %}
+								        </ol>
+							        </nav>
+						</div>
+					</div>
+				</div>
+			</div>
+         {% endfor %}
+		</main>
+{% endblock %}
